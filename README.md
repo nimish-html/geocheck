@@ -1,44 +1,108 @@
-# SaaS landing page template
+# 🌍 GeoCheck
 
-A Landing page template for SaaS applications.
+A beautiful single-page web application that checks if your website is accessible across multiple countries worldwide using residential proxies.
 
-![Preview](/app/opengraph-image.png)
+![GeoCheck](public/preview.png)
 
-## Table of Contents
+## ✨ Features
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- **8-Country Geo-Checking**: Instantly verify website accessibility in US, UK, UAE, Canada, Germany, France, Australia, and Japan
+- **Real-time Results**: See status icons (✅/❌/⚠️) and response times for each region
+- **Beautiful UI**: Built with Next.js 15, ShadcnUI, and Tailwind CSS v4
+- **Smooth Animations**: Powered by Framer Motion
+- **Demo Mode**: Works without credentials for testing
+- **Error Handling**: Clear validation for empty and invalid URLs
 
-## Introduction
+## 🚀 Quick Start
 
-This project is a starter template for SaaS applications landing page using Next.js 15, ShadCN UI, and Tailwind CSS 4.
+```bash
+# Clone the repository
+git clone https://github.com/nimish-html/geocheck.git
+cd geocheck
 
-## Features
+# Install dependencies
+npm install
 
-- Next.js 15
-- ShadCN UI for beautiful and responsive UI components
-- Tailwind CSS 4 for easy styling and customization
+# Run development server
+npm run dev
+```
 
-## Getting Started
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-To get started with this template, follow these steps:
+## 🔧 Configuration
 
-1. Clone the repository: `git clone https://github.com/gonzalochale/saas-landing-template.git`
-2. Install the dependencies: `npm install`
-3. Start the development server: `npm run dev`
+### Thordata Proxy Setup (Optional)
 
-## Usage
+For production use with real geo-checking:
 
-Once the development server is running, you can access the application at `http://localhost:3000`. From there, you can start building your SaaS application by customizing the provided components, adding new pages, and implementing your business logic.
+1. Copy the environment example file:
+   ```bash
+   cp .env.example .env.local
+   ```
 
-## Contributing
+2. Add your [Thordata](https://thordata.com) credentials:
+   ```env
+   THORDATA_PROXY_HOST=proxy.thordata.com
+   THORDATA_PROXY_PORT=9000
+   THORDATA_USER=your_username
+   THORDATA_PASS=your_password
+   ```
 
-Contributions are welcome! If you have any ideas, suggestions, or bug reports, please open an issue or submit a pull request.
+3. Restart the dev server
 
-## License
+> **Note**: Without credentials, the app runs in demo mode with simulated results.
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+## 📦 Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) with Turbopack
+- **UI Library**: [ShadcnUI](https://ui.shadcn.com/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Language**: TypeScript
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Proxy Service**: [Thordata Residential Proxies](https://thordata.com)
+
+## 🌐 How It Works
+
+1. User enters a website URL
+2. App makes parallel requests through residential proxies in 8 countries
+3. Each request checks if the website is accessible from that geo
+4. Results display with status icons and response times
+
+## 📁 Project Structure
+
+```
+geocheck/
+├── app/
+│   ├── api/check-geo/     # API endpoint for geo-checking
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Main page
+├── components/
+│   ├── geo-checker.tsx    # Main geo-checker component
+│   ├── navbar.tsx         # Navigation bar
+│   ├── footer.tsx         # Footer
+│   └── ui/                # ShadcnUI components
+└── .env.example           # Environment variables template
+```
+
+## 🚢 Deployment
+
+Deploy to Vercel with one click:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/nimish-html/geocheck)
+
+Don't forget to add your environment variables in the Vercel dashboard!
+
+## 📝 License
+
+MIT License - see [license.txt](license.txt)
+
+## 🙏 Acknowledgments
+
+- Built with [SaaS Landing Template](https://github.com/gonzalochale/saas-landing-template)
+- Powered by [Thordata](https://thordata.com) residential proxies
+- UI components from [ShadcnUI](https://ui.shadcn.com/)
+
+---
+
+Made with ❤️ for checking website geo-accessibility
