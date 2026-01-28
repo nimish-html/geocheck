@@ -14,11 +14,11 @@ export default function NavBar() {
           </div>
           <div className="flex items-center space-x-4">
             <Link
-              href="https://thordata.com"
+              href="https://github.com/nimish-html/geocheck"
               target="_blank"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors hidden sm:block"
             >
-              Powered by Thordata
+              GitHub
             </Link>
             <ThemeSwitcher />
           </div>
