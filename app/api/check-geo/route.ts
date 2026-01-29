@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { HttpsProxyAgent } from "https-proxy-agent";
 
 interface GeoResult {
     country: string;
@@ -20,10 +21,10 @@ const GEOS = [
 ];
 
 // Thordata proxy configuration
-// Docs: https://doc.thordata.com/doc/proxies/residential-proxies
+// Docs: https://doc.thordata.com/doc/proxies/residential-proxies/making-request
 const THORDATA_CONFIG = {
-    host: process.env.THORDATA_PROXY_HOST || "proxy.thordata.com",
-    port: process.env.THORDATA_PROXY_PORT || "9000",
+    host: process.env.THORDATA_PROXY_HOST || "t.pr.thordata.net",
+    port: process.env.THORDATA_PROXY_PORT || "9999",
     user: process.env.THORDATA_USER || "",
     pass: process.env.THORDATA_PASS || "",
 };
@@ -61,19 +62,18 @@ async function checkFromGeo(
 
     try {
         // Build proxy URL with geo-targeting
-        // Format: username-country-XX:password@host:port
-        const proxyUrl = `http://${THORDATA_CONFIG.user}-country-${geo.code.toLowerCase()}:${THORDATA_CONFIG.pass}@${THORDATA_CONFIG.host}:${THORDATA_CONFIG.port}`;
+        // Format: USERNAME-country-XX:PASSWORD@host:port
+        // Note: THORDATA_USER should already include any required prefix (e.g., td-customer-...)
+        const proxyUsername = `${THORDATA_CONFIG.user}-country-${geo.code.toLowerCase()}`;
+        const proxyUrl = `http://${proxyUsername}:${THORDATA_CONFIG.pass}@${THORDATA_CONFIG.host}:${THORDATA_CONFIG.port}`;
 
-        // Note: In production, use a library like 'https-proxy-agent' or 'undici' for proxy support
-        // For Next.js Edge/Node runtime, you may need to configure proxy differently
-        // This is a simplified example - actual implementation depends on your proxy library
+        // Create proxy agent
+        const agent = new HttpsProxyAgent(proxyUrl);
 
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout for proxy requests
 
         try {
-            // For demo purposes, making a direct request
-            // In production, configure proxy agent properly
             const response = await fetch(url, {
                 method: "HEAD",
                 signal: controller.signal,
@@ -81,6 +81,8 @@ async function checkFromGeo(
                     "User-Agent":
                         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
                 },
+                // @ts-expect-error - agent is valid for Node.js fetch
+                agent: agent,
             });
 
             clearTimeout(timeoutId);

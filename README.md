@@ -44,9 +44,9 @@ For production use with real geo-checking:
 
 2. Add your [Thordata](https://thordata.com) credentials:
    ```env
-   THORDATA_PROXY_HOST=proxy.thordata.com
-   THORDATA_PROXY_PORT=9000
-   THORDATA_USER=your_username
+   THORDATA_PROXY_HOST=your_proxy_host.pr.thordata.net
+   THORDATA_PROXY_PORT=9999
+   THORDATA_USER=td-customer-YOUR_USERNAME
    THORDATA_PASS=your_password
    ```
 
