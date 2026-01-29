@@ -1,6 +1,8 @@
 # 🌍 GeoCheck
 
-A beautiful single-page web application that checks if your website is accessible across multiple countries worldwide using residential proxies.
+Ever wondered if your site *actually* loads for users in Dubai, Tokyo, London or whichever country most of users come from?
+
+VPNs are slow and manual checks are a pain. I built **GeoCheck** to solve exactly that. Just paste your URL, and it instantly ping it from residential proxies in 8 different countries to show you exactly the load times and the status of your site.
 
 ![GeoCheck](public/preview.png)
 
@@ -105,4 +107,4 @@ MIT License - see [license.txt](license.txt)
 
 ---
 
-Made with ❤️ for checking website geo-accessibility
+Made with ❤️
