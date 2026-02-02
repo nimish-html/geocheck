@@ -42,7 +42,7 @@ For production use with real geo-checking:
    cp .env.example .env.local
    ```
 
-2. Add your [Thordata](https://thordata.com) credentials:
+2. Add your [Thordata](https://www.thordata.com/?ls=Reddit&lk=sh) credentials:
    ```env
    THORDATA_PROXY_HOST=your_proxy_host.pr.thordata.net
    THORDATA_PROXY_PORT=9999
@@ -61,7 +61,7 @@ For production use with real geo-checking:
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Language**: TypeScript
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Proxy Service**: [Thordata Residential Proxies](https://thordata.com)
+- **Proxy Service**: [Thordata Residential Proxies](https://www.thordata.com/?ls=Reddit&lk=sh)
 
 ## 🌐 How It Works
 
@@ -102,7 +102,7 @@ MIT License - see [license.txt](license.txt)
 ## 🙏 Acknowledgments
 
 - Built with [SaaS Landing Template](https://github.com/gonzalochale/saas-landing-template)
-- Powered by [Thordata](https://thordata.com) residential proxies
+- Powered by [Thordata](https://www.thordata.com/?ls=Reddit&lk=sh) residential proxies
 - UI components from [ShadcnUI](https://ui.shadcn.com/)
 
 ---
